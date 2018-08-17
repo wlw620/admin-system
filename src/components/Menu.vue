@@ -1,5 +1,5 @@
 <template>
-  <Menu theme="light" width="auto" class="menu">
+  <Menu theme="light" width="auto" class="menu" :active-name="activename">
     <!-- logo -->
     <div class="logo-con">
       <img src="../static/imgs/logo.png" alt="三士渡教育">
@@ -31,6 +31,7 @@ export default {
     return {
       menuList: menuList
     };
-  }
+  },
+  props: ['activename']
 };
 </script>

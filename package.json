@@ -12,6 +12,9 @@
   "dependencies": {
     "countup": "^1.8.2",
     "iview": "^3.0.0",
+    "koa": "^2.5.2",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "vue": "^2.5.2",
     "vue-i18n": "^8.0.0",
     "vue-router": "^3.0.1"

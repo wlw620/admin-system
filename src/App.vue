@@ -2,7 +2,7 @@
   <div id="app">
     <!--左侧菜单-->
     <Sider class="menu-wrap">
-      <menu-component></menu-component>
+      <menu-component :activename="activeName"></menu-component>
     </Sider>
     <!--左侧菜单 END-->
     <!--右侧内容-->
@@ -25,6 +25,11 @@ import MenuComponent from "./components/Menu";
 
 export default {
   name: "App",
+  data(){
+    return {
+      activeName:''
+    }
+  },
   components: {
     "menu-component": MenuComponent
   },
@@ -33,7 +38,8 @@ export default {
   },
   methods: {
     setBreadCrumb(route) {
-      console.error(route);
+      this.activeName = route.path.slice(1);
+      console.error(this.activeName);
     }
   },
   watch: {
