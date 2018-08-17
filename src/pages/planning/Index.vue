@@ -4,7 +4,7 @@
     <Row>
 
       <Tabs class="margin-t-20">
-        <TabPane :label="$t('planning.tab1')" icon="logo-apple">标签一的内容</TabPane>
+        <TabPane :label="$t('planning.tab1')" icon="logo-apple">标签一2的内容</TabPane>
         <TabPane :label="$t('planning.tab2')" icon="logo-windows">标签二的内容</TabPane>
         <TabPane :label="$t('planning.tab3')" icon="logo-tux">标签三的内容</TabPane>
         <TabPane :label="$t('planning.tab4')" icon="logo-tux">标签三的内容</TabPane>

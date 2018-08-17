@@ -57,6 +57,9 @@ export default {
   },
   data() {
     return {
+      cityList:[],
+      reqInfo: {},
+      model1: "",
       inforCardData: [
         {
           title: "总补充文书",

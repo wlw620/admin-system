@@ -1,82 +1,80 @@
 <template>
   <div>
-    <h3 class="padding-b-10 border-line">{{$t('planning.contentTxt')}}</h3>
-    <Row>
-      <Tabs class="margin-t-20">
-        <TabPane :label="$t('planning.tab1')" icon="logo-apple">标签一的内容</TabPane>
-        <TabPane :label="$t('planning.tab2')" icon="logo-windows">标签二的内容</TabPane>
-        <TabPane :label="$t('planning.tab3')" icon="logo-tux">标签三的内容</TabPane>
-        <TabPane :label="$t('planning.tab4')" icon="logo-tux">标签三的内容</TabPane>
-      </Tabs>
+    <Row class="margin-b-10" :gutter="10">
+      <Col class="margin-b-10" :xs="24" :sm="12" :md="6" v-for="(infor, i) in inforCardData" :key="`infor-${i}`">
+      <div @click="addTheme(infor.eventName)">
+        <Card class="padding-20">
+          <p class="font-size-16 font-bold padding-b-20">{{ infor.title }}</p>
+          <div class="display-flex">
+            <Icon class="font-size-60" :type="infor.icon" :style="infor.color" />
+            <count-to v-if="infor.count !== -1" class="font-size-40 font-bold count" :end="infor.count" />
+          </div>
+        </Card>
+      </div>
+      </Col>
     </Row>
   </div>
 </template>
-<style lang="less">
-.col {
-  padding-right: 40px;
-  height: 100px;
+
+<script>
+import TableComponent from "../../components/Table";
+import CountTo from "../../components/Countto";
+
+export default {
+  components: {
+    CountTo
+  },
+  methods: {
+    addTheme(name) {
+      if (name === 'add') {
+        this.$router.push('/addtopics')
+      }
+    }
+  },
+  data() {
+    return {
+      cityList: [],
+      reqInfo: {},
+      model1: "",
+      inforCardData: [
+        {
+          title: this.$t("psupload.finish"),
+          icon: "ios-create-outline",
+          count: 100,
+          color: "color:#41b3f9"
+        },
+        {
+          title: this.$t("psupload.unread"),
+          icon: "md-close",
+          count: 30,
+          color: "color:#707cd2"
+        },
+        {
+          title: this.$t("psupload.theme"),
+          icon: "md-checkmark",
+          count: 70,
+          color: "color:#f33155"
+        },
+        {
+          title: this.$t("psupload.newTheme"),
+          icon: "md-add",
+          eventName: "add",
+          count: -1,
+          color: "color:#f33155"
+        }
+      ]
+    };
+  }
+};
+</script>
+
+<style>
+.count {
+  flex: 1;
+  text-align: right;
 }
-.ivu-form .ivu-form-item-label {
-  font-size: 14px;
-  font-weight: bold;
-}
-.ivu-select-placeholder {
-  text-align: left;
-}
-.ivu-select-selected-value {
-  text-align: left;
-}
-.buttom {
+.bottom {
   margin-top: 24px;
 }
 </style>
 
-<script>
-import '../../static/styles/tab.less';
-import TableComponent from "../../components/Table";
-
-export default {
-  data() {
-    return {
-      cityList: [
-        {
-          value: "New York",
-          label: "New York"
-        },
-        {
-          value: "London",
-          label: "London"
-        },
-        {
-          value: "Sydney",
-          label: "Sydney"
-        },
-        {
-          value: "Ottawa",
-          label: "Ottawa"
-        },
-        {
-          value: "Paris",
-          label: "Paris"
-        },
-        {
-          value: "Canberra",
-          label: "Canberra"
-        }
-      ],
-      addSchoolInfo: {
-        schoolName: "",
-        batch: ""
-      }
-    };
-  },
-  components: {
-    "table-compoent": TableComponent
-  },
-  methods: {
-    onOpen(isOpen) {
-      //  this.refs.addschoolSelect.setQuery('');
-    }
-  }
-};
-</script>

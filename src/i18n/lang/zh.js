@@ -23,5 +23,21 @@ module.exports = {
     selectFileTxt: '选择文件',
     selectTeacherTxt: '选择导师',
     uploadTxt: '上传'
+  },
+  psupload: {
+    finish: '已写篇数',
+    unread: '未读篇数',
+    theme: '主题',
+    newTheme: '新主题'
+  },
+  booklets: {
+    cardTxt1: '书籍',
+    cardTxt2: '指南',
+    open: '打开教程'
+  },
+  resources:{
+    cardTxt1: '翻墙利器 - Stoooges VPN',
+    cardTxt2: '账号密码',
+    course:'使用教程',
   }
 }
