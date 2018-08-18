@@ -1,8 +1,8 @@
 <template>
-  <div class="adduser-container">
+  <div class="container-box adduser-container">
     <Row>
       <Col :xs="20" :sm="18" :md="16" :lg="14">
-      <Card>
+      <Card :bordered="false">
         <Form :model="formTop" label-position="top">
           <FormItem label="Identity 账户类型">
             <Input v-model="formTop.input1"></Input>

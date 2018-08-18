@@ -1,8 +1,8 @@
 <template>
-  <div class="booklets-container">
+  <div class="container-box booklets-container">
     <Row :gutter="16">
       <Col :xs="24" :sm="12">
-      <Card>
+      <Card :bordered="false">
         <p slot="title">{{$t('booklets.cardTxt1')}}</p>
         <Table :columns="columns1" :data="data1"></Table>
         <div class="margin-t-10">
@@ -22,7 +22,7 @@
       </Card>
       </Col>
       <Col :xs="24" :sm="12">
-      <Card>
+      <Card :bordered="false">
         <p slot="title">{{$t('booklets.cardTxt2')}}</p>
         <Table :columns="columns1" :data="data1"></Table>
       </Card>

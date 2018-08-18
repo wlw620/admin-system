@@ -1,17 +1,19 @@
 <template>
-  <Card>
-    <h3 class="padding-b-10 border-line">{{$t('planning.contentTxt')}}</h3>
-    <Row>
+  <div class="container-box">
+    <Card :bordered="false">
+      <h3 class="padding-b-10 border-line">{{$t('planning.contentTxt')}}</h3>
+      <Row>
 
-      <Tabs class="margin-t-20">
-        <TabPane :label="$t('planning.tab1')" icon="logo-apple">标签一2的内容</TabPane>
-        <TabPane :label="$t('planning.tab2')" icon="logo-windows">标签二的内容</TabPane>
-        <TabPane :label="$t('planning.tab3')" icon="logo-tux">标签三的内容</TabPane>
-        <TabPane :label="$t('planning.tab4')" icon="logo-tux">标签三的内容</TabPane>
-      </Tabs>
+        <Tabs class="margin-t-20">
+          <TabPane :label="$t('planning.tab1')" icon="logo-apple">标签一2的内容</TabPane>
+          <TabPane :label="$t('planning.tab2')" icon="logo-windows">标签二的内容</TabPane>
+          <TabPane :label="$t('planning.tab3')" icon="logo-tux">标签三的内容</TabPane>
+          <TabPane :label="$t('planning.tab4')" icon="logo-tux">标签三的内容</TabPane>
+        </Tabs>
 
-    </Row>
-  </Card>
+      </Row>
+    </Card>
+  </div>
 </template>
 <style lang="less">
 .col {

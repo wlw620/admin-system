@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container-box">
     <Row>
-      <Card class="margin-b-20">
+      <Card :bordered="false" class="margin-b-20">
         <Form :mode="reqInfo" label-position="top">
           <Col span="10" class="col">
           <FormItem :label="$t('addschool.schoolnameTit')">
@@ -26,7 +26,7 @@
       </Card>
     </Row>
     <Row>
-      <Card class="margin-b-20">
+      <Card :bordered="false" class="margin-b-20">
         <Table :columns="columns" :data="data"></Table>
       </Card>
     </Row>

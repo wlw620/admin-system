@@ -1,6 +1,6 @@
 <template>
-  <div class="report-container">
-    <Card>
+  <div class="container-box report-container">
+    <Card :bordered="false">
       <Form :model="query" label-position="top">
         <Row :gutter="16">
           <Col :sm="12" :xs="24">
@@ -19,7 +19,7 @@
         </div>
       </Form>
     </Card>
-    <Card class="margin-t-10">
+    <Card :bordered="false" class="margin-t-10">
       <Table :columns="columns" :data="data"></Table>
     </Card>
   </div>

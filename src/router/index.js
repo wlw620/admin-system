@@ -9,6 +9,7 @@ import Suppupload from '@/pages/suppupload/Index';
 import Otherupload from '@/pages/otherupload/Index';
 import Booklets from '@/pages/booklets/Index';
 import Resources from '@/pages/resources/Index';
+import Application from '@/pages/application/Index';
 
 import Adduser from '@/pages/adduser/Index';
 import Paymentinfo from '@/pages/paymentinfo/Index';
@@ -39,10 +40,16 @@ export default new Router({
       component: Planning
     },
     {
+      path: '/application',
+      name: '申请文书',
+      component: Application
+    },
+    {
       path: '/psupload',
       name: 'PS主文书',
       component: Psupload
-    },{
+    },
+    {
       path: '/addtopics',
       name: '添加主题',
       component: Addtopics
@@ -56,11 +63,11 @@ export default new Router({
       path: '/otherupload',
       name: '其它材料',
       component: Otherupload
-    },{
+    }, {
       path: '/booklets',
       name: '藏书阁',
       component: Booklets
-    },{
+    }, {
       path: '/resources',
       name: '工具资源',
       component: Resources

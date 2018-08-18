@@ -1,8 +1,8 @@
 <template>
-  <div class="booklets-container">
+  <div class="container-box booklets-container">
     <Row :gutter="16">
       <Col :xs="24" :sm="12">
-      <Card>
+      <Card :bordered="false">
         <p slot="title">{{$t('resources.cardTxt1')}}</p>
         <div class="margin-t-10">
           <Button size="large" type="error" ghost long>{{$t('resources.course')}}</Button>
@@ -10,7 +10,7 @@
       </Card>
       </Col>
       <Col :xs="24" :sm="12">
-      <Card>
+      <Card :bordered="false">
         <p slot="title">{{$t('resources.cardTxt2')}}</p>
         <div>
           <h3>语法利器 - Grammarly</h3>

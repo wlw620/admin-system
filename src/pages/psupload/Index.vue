@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="container-box">
     <Row class="margin-b-10" :gutter="10">
       <Col class="margin-b-10" :xs="24" :sm="12" :md="6" v-for="(infor, i) in inforCardData" :key="`infor-${i}`">
       <div @click="addTheme(infor.eventName)">
-        <Card class="padding-20">
+        <Card :bordered="false" class="padding-20">
           <p class="font-size-16 font-bold padding-b-20">{{ infor.title }}</p>
           <div class="display-flex">
             <Icon class="font-size-60" :type="infor.icon" :style="infor.color" />

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="container-box">
     <Row class="margin-b-10" :gutter="10">
       <Col class="margin-b-10" :xs="24" :sm="12" :md="6" v-for="(infor, i) in inforCardData" :key="`infor-${i}`">
-      <Card class="padding-20">
+      <Card :bordered="false" class="padding-20">
         <p class="font-size-16 font-bold padding-b-20">{{ infor.title }}</p>
         <div class="display-flex">
           <Icon class="font-size-60" :type="infor.icon" :style="infor.color" />
@@ -13,7 +13,7 @@
     </Row>
 
     <Row>
-      <Card class="margin-b-20">
+      <Card :bordered="false" class="margin-b-20">
         <Form :mode="reqInfo" label-position="top">
           <Col class="margin-r-20" span="7">
           <FormItem :label="$t('suppupload.selectSubjectTxt')">

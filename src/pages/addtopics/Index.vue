@@ -1,6 +1,6 @@
 <template>
-  <div class="addtopics-container">
-    <Card>
+  <div class="container-box addtopics-container">
+    <Card :bordered="false">
       <Form :model="request" label-position="top">
         <Row :gutter="16">
           <Col :lg="24">
@@ -20,7 +20,7 @@
       </Form>
     </Card>
 
-    <Card class="margin-t-10">
+    <Card :bordered="false" class="margin-t-10">
       <Table :columns="columns" :data="data"></Table>
     </Card>
   </div>

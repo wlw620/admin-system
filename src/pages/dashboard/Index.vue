@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-box">
     <Row>
       <h3>日期</h3>
       <Col :sm="12">

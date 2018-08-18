@@ -1,20 +1,24 @@
 <template>
   <div id="app">
-    <!--左侧菜单-->
-    <Sider class="menu-wrap">
-      <menu-component :activename="activeName"></menu-component>
-    </Sider>
-    <!--左侧菜单 END-->
-    <!--右侧内容-->
-    <Layout class="right">
-      <Header class="header"></Header>
-      <Content class="content">
-        <div class="container">
-          <router-view></router-view>
-        </div>
-      </Content>
-    </Layout>
-    <!--右侧内容-->
+    <div class="layout">
+      <Layout :style="{minHeight: '100vh'}">
+        <!--左侧菜单-->
+        <Sider theme="light" :style="{position: 'fixed', height: '100vh', left: 0, overflow: 'auto'}" collapsible :collapsed-width="78" v-model="isCollapsed">
+          <menu-component :menuitemClasses="menuitemClasses" :activename="activeName"></menu-component>
+        </Sider>
+        <!--左侧菜单 END-->
+        <!--右侧内容-->
+        <Layout :class="rightClasses">
+          <Header class="header"></Header>
+          <Content class="content">
+            <div class="container">
+              <router-view></router-view>
+            </div>
+          </Content>
+        </Layout>
+        <!--右侧内容-->
+      </Layout>
+    </div>
   </div>
 </template>
 
@@ -25,13 +29,22 @@ import MenuComponent from "./components/Menu";
 
 export default {
   name: "App",
-  data(){
+  data() {
     return {
-      activeName:''
-    }
+      isCollapsed: false,
+      activeName: ""
+    };
   },
   components: {
     "menu-component": MenuComponent
+  },
+  computed: {
+    menuitemClasses: function() {
+      return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
+    },
+    rightClasses: function() {
+      return ["right", this.isCollapsed ? "collapsed-right" : ""];
+    }
   },
   mounted() {
     this.setBreadCrumb(this.$route);

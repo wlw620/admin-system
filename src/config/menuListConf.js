@@ -12,7 +12,11 @@ export default [{
     link: '/planning',
     title: '申请规划',
     name: 'planning',
-
+  },
+  {
+    link: '/application',
+    title: '申请文书',
+    name: 'application',
   },
   {
     link: '/psupload',
