@@ -19,6 +19,16 @@ export default [{
     name: 'application',
   },
   {
+    link: '/questionnaire',
+    title: '调查问卷',
+    name: 'questionnaire',
+  },
+  {
+    link: '/prize',
+    title: '竞赛奖项',
+    name: 'prize'
+  },
+  {
     link: '/psupload',
     title: 'PS主文书',
     name: 'psupload'

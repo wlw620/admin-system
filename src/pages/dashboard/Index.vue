@@ -1,17 +1,9 @@
 <template>
-  <div class="container-box">
+  <div class="container-box dashboard-container">
     <Row>
-      <h3>日期</h3>
-      <Col :sm="12">
-      <DatePicker type="daterange" placement="bottom-end" placeholder="Select date" style="width: 200px"></DatePicker>
+      <Col :xs="24" :sm="14">
       </Col>
-    </Row>
-    <Row class="margin-t-20">
-      <h3>固定表头固定列</h3>
-      <Col :sm="12">
-      <template>
-        <Table width="550" height="200" border :columns="columns2" :data="data4"></Table>
-      </template>
+      <Col :xs="24" :sm="10">
       </Col>
     </Row>
   </div>

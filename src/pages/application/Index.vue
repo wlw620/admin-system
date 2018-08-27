@@ -125,7 +125,7 @@ export default {
 
 <style lang="less">
 .fold {
-  padding-right: 50%;
+  padding-right: 45%;
 }
 .detail {
   padding-top: 60px;

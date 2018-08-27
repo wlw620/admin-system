@@ -52,7 +52,6 @@ export default {
   methods: {
     setBreadCrumb(route) {
       this.activeName = route.path.slice(1);
-      console.error(this.activeName);
     }
   },
   watch: {
