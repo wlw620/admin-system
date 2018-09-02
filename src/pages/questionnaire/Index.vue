@@ -28,14 +28,21 @@ export default {
       status: "wait",
       current: 0,
       maxStep: 6,
-      steps: ["/questionnaire", "/step1", "/step2", "/step3", "/step4", "/step5", "/step6"]
+      steps: [
+        "/questionnaire",
+        "/step1",
+        "/step2",
+        "/step3",
+        "/step4",
+        "/step5",
+        "/step6"
+      ]
     };
   },
   methods: {
     nextStep() {
       if (this.current < this.maxStep) {
         this.current++;
-        console.error(this.steps[this.current]);
         this.$router.push({ path: this.steps[this.current] });
         this.$set(this, "current", this.current);
       }
@@ -43,6 +50,11 @@ export default {
     rest() {
       this.$router.push({ path: this.steps[0] });
       this.$set(this, "current", 0);
+    }
+  },
+  watch: {
+    '$route'(route) {
+      this.$set(this, "current", this.steps.indexOf(route.path));
     }
   },
   mounted() {

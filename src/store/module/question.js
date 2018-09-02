@@ -9,17 +9,9 @@ export default {
 
   },
   mutations: {
-    nexStep(state) {
-      if (state.num < steps.length) {
-        state.num++;
-        state.curStep = steps[state.num];
-      }
-    },
-    prevStep(state) {
-      if (state.num > 0) {
-        state.num--;
-        state.curStep = steps[state.num];
-      }
+    setStep(state, path) {
+      state.curStep = path;
+      state.num = steps.indexOf(path);
     }
   }
 }

@@ -1,7 +1,21 @@
-export default [{
+import Cookies from 'js-cookie'
+
+let userType = Cookies.get('userType') || 'student';
+
+let user = {
+  student: ['dashboard', 'addschool', 'application', 'booklets'],
+  admin: ['adduser', 'resources'],
+  financial: ['paymentinfo', 'viewinternhistory', 'report'],
+}
+
+let menuList = [{
     link: '/dashboard',
     title: '信息总览',
     name: 'dashboard'
+  }, {
+    link: '/dashboard2',
+    title: '信息总览2',
+    name: 'dashboard2'
   },
   {
     link: '/addschool',
@@ -74,3 +88,13 @@ export default [{
     name: 'report'
   }
 ]
+
+let filterFn = (item) => {
+  console.log(item.name);
+  return user[userType].indexOf(item.name) > -1;
+}
+
+
+export default (() => {
+  return menuList.filter(filterFn);
+})();

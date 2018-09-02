@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Dashboard from '@/pages/dashboard/Index';
+import Dashboard2 from '@/pages/dashboard2/Index';
 import Addschool from '@/pages/addschool/Index';
 import Planning from '@/pages/planning/Index';
 import Psupload from '@/pages/psupload/Index';
@@ -39,9 +40,30 @@ export default new Router({
       component: Dashboard,
     },
     {
+      path: '/dashboard2',
+      name: '信息总览',
+      component: Dashboard2,
+      meta: {
+        /*
+         * 该页面只有权限值为super_admin的用户才能访问
+         * 如果这级路由有子路由，则子路由也只有super_admin才能访问
+         * 如果不设置此字段，则所有用户均可访问
+         */
+        access: ['super_admin']
+      }
+    },
+    {
       path: '/addschool',
       name: '选择学校',
-      component: Addschool
+      component: Addschool,
+      meta: {
+        /*
+         * 该页面只有权限值为super_admin的用户才能访问
+         * 如果这级路由有子路由，则子路由也只有super_admin才能访问
+         * 如果不设置此字段，则所有用户均可访问
+         */
+        access: ['super_admin']
+      }
     },
     {
       path: '/planning',
