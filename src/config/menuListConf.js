@@ -3,8 +3,9 @@ import Cookies from 'js-cookie'
 let userType = Cookies.get('userType') || 'student';
 
 let user = {
-  student: ['dashboard', 'addschool', 'application', 'booklets'],
+  student: ['questionnaire', 'dashboard2', 'examination', 'extracurricular','prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   admin: ['adduser', 'resources'],
+  sale:['adduser'],
   financial: ['paymentinfo', 'viewinternhistory', 'report'],
 }
 
@@ -16,6 +17,20 @@ let menuList = [{
     link: '/dashboard2',
     title: '信息总览2',
     name: 'dashboard2'
+  }, {
+    link: '/examination',
+    title: '考试成绩',
+    name: 'examination'
+  },
+  {
+    link: '/extracurricular',
+    title: '课外活动',
+    name: 'extracurricular'
+  },
+  {
+    link: '/service',
+    title: '服务反馈',
+    name: 'service'
   },
   {
     link: '/addschool',

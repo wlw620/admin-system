@@ -28,6 +28,7 @@
 <script>
 import "../static/styles/menu.less";
 import menuList from "../config/menuListConf";
+
 export default {
   data() {
     return {
