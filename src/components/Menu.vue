@@ -32,9 +32,9 @@ import menuList from "../config/menuListConf";
 export default {
   data() {
     return {
-      menuList: menuList
+      menuList: menuList(this.$store.state.identity)
     };
   },
-  props: ['activename','menuitemClasses']
+  props: ["activename", "menuitemClasses"]
 };
 </script>

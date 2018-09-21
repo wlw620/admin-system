@@ -1,11 +1,15 @@
 import Cookies from 'js-cookie'
 
-let userType = Cookies.get('userType') || 'student';
-
-let user = {
-  student: ['questionnaire', 'dashboard2', 'examination', 'extracurricular','prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
+let roleType;
+if (!roleType) {
+  roleType = '';
+}
+let roleList = {
+  intern: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
+  supervisor: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
+  student: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   admin: ['adduser', 'resources'],
-  sale:['adduser'],
+  sale: ['adduser'],
   financial: ['paymentinfo', 'viewinternhistory', 'report'],
 }
 
@@ -105,11 +109,13 @@ let menuList = [{
 ]
 
 let filterFn = (item) => {
-  console.log(item.name);
-  return user[userType].indexOf(item.name) > -1;
+  if (roleList[roleType]) {
+    return roleList[roleType].indexOf(item.name) > -1;
+  }
 }
 
 
-export default (() => {
+export default (type) => {
+  roleType = type;
   return menuList.filter(filterFn);
-})();
+};
