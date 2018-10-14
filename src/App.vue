@@ -12,7 +12,9 @@
         <!--左侧菜单 END-->
         <!--右侧内容-->
         <Layout :class="rightClasses">
-          <Header class="header"></Header>
+          <Header class="header">
+            <a style="color:#fff" @click="logout">退出登录</a>
+          </Header>
           <Content class="content">
             <div class="container">
               <router-view></router-view>
@@ -50,6 +52,7 @@ export default {
     login() {
       return this.$store.state.isLogin;
     },
+
     menuitemClasses: function() {
       return ["menu-item", this.isCollapsed ? "collapsed-menu" : ""];
     },
@@ -62,18 +65,42 @@ export default {
     this.setBreadCrumb(this.$route);
   },
   methods: {
+    logout() {
+        service.logout()
+        .then(res => {
+          if (res && res.identity) {
+            let some = "unlogin";
+            this.$store.commit(some);
+          }
+        })
+        .catch(e => {
+        });
+    },
     getLoginState() {
+      // this.$store.commit("login");
+      // this.$store.commit("setIdentity", "*");
+
       service
         .getLoginState()
         .then(res => {
-          let some = res.err_code || res.need_to_login ? "unlogin" : "login";
+          let some = "unlogin";
+          if (res && res.identity) {
+            some = "login";
+            console.log("角色:::" + res.identity);
+            this.$store.commit("setIdentity", res.identity);
+          }
           this.$store.commit(some);
-          // this.$set(this, "isLogin", !res.need_to_login);
         })
-        .catch(e => {});
+        .catch(e => {
+          this.$store.commit("unlogin");
+        });
     },
     setBreadCrumb(route) {
-      this.activeName = route.path.slice(1);
+      let name = route.path.slice(1);
+      if (name.indexOf("/") > -1) {
+        name = name.replace("/", "_");
+      }
+      this.activeName = name;
     }
   },
   watch: {

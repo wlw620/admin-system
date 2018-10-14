@@ -95,9 +95,15 @@
 </style>
 
 <script>
+import service from "../../service/dashboard/index";
 export default {
   data() {
     return {};
+  },
+  mounted() {
+    service.getDashboardData().then(res => {
+      console.log(res);
+    });
   }
 };
 </script>

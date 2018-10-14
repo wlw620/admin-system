@@ -2,7 +2,8 @@ import axios from 'axios';
 axios.defaults.withCredentials = true;
 let defOpts = {
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    // 'Content-Type': 'application/x-www-form-urlencoded'
   }
 };
 let Service = (options) => {

@@ -28,6 +28,11 @@ import Paymentinfo from '@/pages/paymentinfo/Index';
 import Viewinternhistory from '@/pages/viewinternhistory/Index';
 import Report from '@/pages/report/Index';
 
+import SalesDashboard from '@/pages/sales/dashboard/Index';
+import SalesAddcustomer from '@/pages/sales/addcustomer/Index';
+import SalesViewcustomer from '@/pages/sales/viewcustomer/Index';
+
+
 Vue.use(Router);
 
 export default new Router({
@@ -147,6 +152,25 @@ export default new Router({
       path: '/report',
       name: 'INTERN周报',
       component: Report
+    },
+
+    {
+      path: '/sales/dashboard',
+      name: '销售信息总览',
+      component: SalesDashboard
+    },
+
+    {
+      path: '/sales/addcustomer',
+      name: '添加客户',
+      component: SalesAddcustomer
+    },
+
+    {
+      path: '/sales/viewcustomer',
+      name: '客户人',
+      component: SalesViewcustomer
     }
+
   ]
 });

@@ -84,5 +84,34 @@ module.exports = {
     label6Text2: "您是通过什么渠道了解到三士渡的? 又是什么吸引您加入我们的?",
     label6Text3: "您希望被分配到一个什么样的导师",
     label6Text4: "补充说明"
+  },
+
+  sales_addcustomer: {
+    type: '客户类型',
+    contactname: '联系人姓名',
+    contactname_placeholder: '联系人中文名',
+    contactidentity: '联系人类型',
+    typeOpt1: '美国本科',
+    typeOpt2: '美国研究生',
+    typeOpt3: '转学',
+    typeOpt4: '英国本科',
+    typeOpt5: '其他',
+    contactidentityOpt1: '未知',
+    contactidentityOpt2: '学员本人',
+    contactidentityOpt3: '家长',
+    chinesename: '学员姓名',
+    chinesename_placeholder: '学员中文名',
+    wechat: '微信号',
+    phone: '电话',
+    area: '居住地或高中所在地(省市)',
+    area_placeholder: '如：北京',
+    highschool:'高中名称',
+    highschool_placeholder:'如：人大附中',
+    appyear:'申请年份',
+    comment:'客户其他要求',
+    comment_placeholder:'如：想周三来面试',
+    tag:'备注标签',
+    tag_placeholder:'如：标化神，拖延狗，活动强 等...',
+
   }
 }

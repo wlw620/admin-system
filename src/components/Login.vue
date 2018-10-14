@@ -20,7 +20,7 @@
           <li>
             <FormItem class="item">
               <Button class="button" type="primary" size="large" @click="login" long>LOGIN</Button>
-              <Button class="button margin-t-10" type="primary" size="large" long>微信扫码登录</Button>
+              <Button class="button margin-t-10" type="primary" size="large" @click="wechatLogin" long>微信扫码登录</Button>
             </FormItem>
           </li>
         </Form>
@@ -54,6 +54,14 @@ export default {
         .catch(e => {
           this.$store.commit("unlogin");
         });
+    },
+    // 微信扫码登录
+    wechatLogin() {
+      service.getWechatloginUrl().then(res => {
+        if (res && res.url) {
+          window.location.href = res.url;
+        }
+      });
     }
   }
 };

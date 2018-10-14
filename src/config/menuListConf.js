@@ -5,12 +5,16 @@ if (!roleType) {
   roleType = '';
 }
 let roleList = {
+  sales: ['dashboard', 'questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   intern: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   supervisor: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   student: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   admin: ['adduser', 'resources'],
   sale: ['adduser'],
   financial: ['paymentinfo', 'viewinternhistory', 'report'],
+  '*': [
+    'sales_viewcustomer', 'sales_addcustomer','sales_dashboard', 'resources','adduser','paymentinfo', 'viewinternhistory', 'report','dashboard', 'questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'
+  ]
 }
 
 let menuList = [{
@@ -105,7 +109,26 @@ let menuList = [{
     link: '/report',
     title: 'INTERN周报',
     name: 'report'
+  },
+
+  {
+    link: '/sales/dashboard',
+    title: '销售信息总览',
+    name: 'sales_dashboard'
+  },
+
+  {
+    link: '/sales/addcustomer',
+    title: '添加客户',
+    name: 'sales_addcustomer'
+  },
+
+  {
+    link: '/sales/viewcustomer',
+    title: '客户人',
+    name: 'sales_viewcustomer'
   }
+
 ]
 
 let filterFn = (item) => {
@@ -117,5 +140,6 @@ let filterFn = (item) => {
 
 export default (type) => {
   roleType = type;
+  console.log(type);
   return menuList.filter(filterFn);
 };

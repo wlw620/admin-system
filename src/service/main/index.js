@@ -14,6 +14,18 @@ export default {
       method: 'post',
       url: host + 'login',
       data: params
-    })
+    });
+  },
+  getWechatloginUrl() {
+    return Service({
+      method: 'get',
+      url: host + 'wechatlogin'
+    });
+  },
+  logout(){
+    return Service({
+      method: 'post',
+      url: host + 'logout'
+    });
   }
 }
