@@ -1,14 +1,14 @@
 <template>
-  <Form :model="questionInfo" label-position="top">
-    <FormItem :label="$t('question.schoolName')">
+  <Form label-position="top" :model="form" ref="form" :rules="ruleValidate">
+    <FormItem :label="$t('form.schoolName')">
       <Input v-model="questionInfo.input1"></Input>
     </FormItem>
-    <FormItem :label="$t('question.schoolType')" prop="gender">
+    <FormItem :label="$t('form.schoolType')" prop="gender">
       <Select v-model="questionInfo.schoolType">
         <Option v-for="item in schoolTyps" :value="item.key" :key="item.key">{{ item.value }}</Option>
       </Select>
     </FormItem>
-    <FormItem :label="$t('question.schoolBatch')">
+    <FormItem :label="$t('form.schoolBatch')">
       <Select v-model="questionInfo.schoolBatch">
         <Option v-for="item in schoolBatch" :value="item.key" :key="item.key">{{ item.value }}</Option>
       </Select>

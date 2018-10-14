@@ -1,5 +1,5 @@
 <template>
-  <Form :model="questionInfo" label-position="top">
+  <Form label-position="top" :model="form" ref="form" :rules="ruleValidate">
     <FormItem :label="$t('question.label4Text1')">
       <RadioGroup v-model="questionInfo.direction">
         <Radio class="margin-l-10 margin-r-20" :label="$t('question.radio4Text1')"></Radio>
