@@ -15,13 +15,7 @@ import Resources from '@/pages/resources/Index';
 import Application from '@/pages/application/Index';
 import Prize from '@/pages/prize/Index';
 import Questionnaire from '@/pages/questionnaire/Index';
-import Question0 from '@/pages/questionnaire/Question0';
-import Question1 from '@/pages/questionnaire/Question1';
-import Question2 from '@/pages/questionnaire/Question2';
-import Question3 from '@/pages/questionnaire/Question3';
-import Question4 from '@/pages/questionnaire/Question4';
-import Question5 from '@/pages/questionnaire/Question5';
-import Question6 from '@/pages/questionnaire/Question6';
+
 
 import Adduser from '@/pages/adduser/Index';
 import Paymentinfo from '@/pages/paymentinfo/Index';
@@ -81,31 +75,10 @@ export default new Router({
       component: Prize
     },
     {
-      path: '/questionnaire',
+      path: '/questionnaire/:id',
       name: '调查问卷',
       component: Questionnaire,
-      children: [{
-        path: '/',
-        component: Question0
-      }, {
-        path: '/step1',
-        component: Question1
-      }, {
-        path: '/step2',
-        component: Question2
-      }, {
-        path: '/step3',
-        component: Question3
-      }, {
-        path: '/step4',
-        component: Question4
-      }, {
-        path: '/step5',
-        component: Question5
-      }, {
-        path: '/step6',
-        component: Question6
-      }]
+
     },
     {
       path: '/addtopics',
@@ -171,6 +144,5 @@ export default new Router({
       name: '客户人',
       component: SalesViewcustomer
     }
-
   ]
 });

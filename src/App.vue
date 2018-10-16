@@ -77,23 +77,23 @@ export default {
         });
     },
     getLoginState() {
-      // this.$store.commit("login");
-      // this.$store.commit("setIdentity", "*");
+      this.$store.commit("login");
+      this.$store.commit("setIdentity", "*");
 
-      service
-        .getLoginState()
-        .then(res => {
-          let some = "unlogin";
-          if (res && res.identity) {
-            some = "login";
-            console.log("角色:::" + res.identity);
-            this.$store.commit("setIdentity", res.identity);
-          }
-          this.$store.commit(some);
-        })
-        .catch(e => {
-          this.$store.commit("unlogin");
-        });
+      // service
+      //   .getLoginState()
+      //   .then(res => {
+      //     let some = "unlogin";
+      //     if (res && res.identity) {
+      //       some = "login";
+      //       console.log("角色:::" + res.identity);
+      //       this.$store.commit("setIdentity", res.identity);
+      //     }
+      //     this.$store.commit(some);
+      //   })
+      //   .catch(e => {
+      //     this.$store.commit("unlogin");
+      //   });
     },
     setBreadCrumb(route) {
       let name = route.path.slice(1);
