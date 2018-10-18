@@ -12,7 +12,7 @@
       </Steps>
       <div class="padding-30">
         <question-0 v-if="current === 0" ref="question0"></question-0>
-        <question-1 v-if="current === 1" ref="question1" v-bind:id="current"></question-1>
+        <question-1 v-if="current === 1" ref="question1"></question-1>
         <question-2 v-if="current === 2" ref="question2"></question-2>
         <question-3 v-if="current === 3" ref="question3"></question-3>
         <question-4 v-if="current === 4" ref="question4"></question-4>
@@ -50,7 +50,8 @@ export default {
         "/questionnaire/4",
         "/questionnaire/5",
         "/questionnaire/6"
-      ]
+      ],
+      currentFormData: {}
     };
   },
   watch: {
@@ -62,28 +63,44 @@ export default {
       this.$router.push({ path: this.steps[this.current] });
     },
     getRouteParams() {
-      this.setStep(this.$route.params.id);
+      let step = this.$route.params.id > this.current ? this.current : this.$route.params.id;
+      this.setStep(step);
     },
+    submit() {},
     nextStep() {
       if (this.current < this.maxStep) {
-        this.getCurrentPageData();
-        this.setStep(this.current + 1);
-        this.setNextPageData();
+        this.getCurrentPageData()
+          .then(data => {
+            let key = "question" + this.current;
+            this.$localStorage.set(key, JSON.stringify(data));
+            this.setStep(this.current + 1);
+          })
+          .catch(e => {
+            console.log("失败", e);
+          });
+
+        // this.setNextPageData();
       }
     },
+
     getCurrentPageData() {
       let key = "question" + this.current;
-      this.$localStorage.set(key, JSON.stringify(this.$refs[key].form));
+      return this.$refs[key].getCurrentPageFormDara();
     },
     setNextPageData() {
       let key = "question" + this.current;
-      console.error("KEY:::" + key);
+      this.currentFormData = {
+        schoolName: "123",
+        schoolType: "",
+        schoolBatch: ""
+      };
     },
     rest() {
       this.setStep(0);
     }
   },
   mounted() {
+    console.log(222);
     this.rest();
   },
   components: {

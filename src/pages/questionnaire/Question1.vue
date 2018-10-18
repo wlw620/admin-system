@@ -1,21 +1,20 @@
 <template>
-<div> {{id}}
-
-  <Form label-position="top" :model="form" ref="form" :rules="ruleValidate">
-    <FormItem :label="$t('form.schoolName')">
-      <Input v-model="form.schoolName"></Input>
-    </FormItem>
-    <FormItem :label="$t('form.schoolType')" prop="gender">
-      <Select v-model="form.schoolType">
-        <Option v-for="item in schoolTyps" :value="item.key" :key="item.key">{{ item.value }}</Option>
-      </Select>
-    </FormItem>
-    <FormItem :label="$t('form.schoolBatch')">
-      <Select v-model="form.schoolBatch">
-        <Option v-for="item in schoolBatch" :value="item.key" :key="item.key">{{ item.value }}</Option>
-      </Select>
-    </FormItem>
-  </Form>
+  <div>
+    <Form label-position="top" :model="form" ref="form" :rules="ruleValidate">
+      <FormItem :label="$t('question.schoolName')" prop="schoolName">
+        <Input v-model="form.schoolName"></Input>
+      </FormItem>
+      <FormItem :label="$t('question.schoolType')">
+        <Select v-model="form.schoolType">
+          <Option v-for="item in schoolTyps" :value="item.key" :key="item.key">{{ item.value }}</Option>
+        </Select>
+      </FormItem>
+      <FormItem :label="$t('question.schoolBatch')">
+        <Select v-model="form.schoolBatch">
+          <Option v-for="item in schoolBatch" :value="item.key" :key="item.key">{{ item.value }}</Option>
+        </Select>
+      </FormItem>
+    </Form>
   </div>
 </template>
 <script>
@@ -25,6 +24,7 @@ const defaultValidate = {
   trigger: "blur"
 };
 export default {
+  // props:['form'],
   data() {
     return {
       schoolTyps: [
@@ -40,16 +40,31 @@ export default {
         }
       ],
       form: {
-        schoolType: "",
-        input1: "",
-        input2: "",
-        input3: ""
+        schoolName: "",
+        schoolType: "1",
+        schoolBatch: ""
       },
       ruleValidate: {
-        empty: [defaultValidate]
+        schoolName: [defaultValidate]
       }
     };
   },
-  methods: {}
+  methods: {
+    getCurrentPageFormDara() {
+      return this.validate('form');
+    },
+    validate(name) {
+      console.log(this.$refs[name]);
+      return new Promise((resolve, reject) => {
+        this.$refs[name].validate(valid => {
+          if (valid) {
+            resolve();
+          } else {
+            reject();
+          }
+        });
+      });
+    }
+  }
 };
 </script>

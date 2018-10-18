@@ -1,10 +1,10 @@
 <template>
   <Form label-position="top" :model="form" ref="form" :rules="ruleValidate">
     <FormItem :label="$t('question.score')">
-      <Input v-model="questionInfo.textarea" type="textarea" :autosize="{minRows: 3,maxRows: 6}" placeholder="Enter something..."></Input>
+      <Input v-model="form.textarea" type="textarea" :autosize="{minRows: 3,maxRows: 6}" placeholder="Enter something..."></Input>
     </FormItem>
     <FormItem :label="$t('question.totalScore')">
-      <Input v-model="questionInfo.textarea1" type="textarea" :autosize="{minRows: 3,maxRows: 6}" placeholder="Enter something..."></Input>
+      <Input v-model="form.textarea1" type="textarea" :autosize="{minRows: 3,maxRows: 6}" placeholder="Enter something..."></Input>
     </FormItem>
   </Form>
 </template>
@@ -12,15 +12,33 @@
 export default {
   data() {
     return {
-      questionInfo: {
-        input1: "",
-        input2: "",
-        input3: "",
-        textarea: "",
-        textarea1: ""
+      ruleValidate: {},
+      form: {
+        grades: "",
+        gpa: ""
       }
     };
   },
-  methods: {}
+  methods: {
+    getCurrentPageFormDara() {
+      return this.validate("form");
+    },
+    validate(name) {
+      return new Promise((resolve, reject) => {
+        resolve(this.form);
+      });
+
+      // return new Promise((resolve, reject) => {
+      //   this.$refs[name].validate(valid => {
+      //     console.log(11111);
+      //     if (valid) {
+      //       resolve();
+      //     } else {
+      //       reject();
+      //     }
+      //   });
+      // });
+    }
+  }
 };
 </script>
