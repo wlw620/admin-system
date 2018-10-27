@@ -17,7 +17,7 @@
           <Icon type="ios-people" />
           <span>{{item.title}}</span>
         </template>
-        <MenuItem :name="childItem.name" v-for="childItem in item.children" :to="childItem.link"> {{childItem.name}}
+        <MenuItem :name="childItem.name" v-for="childItem in item.children" :to="childItem.link"> {{childItem.title}}
         </MenuItem>
       </Submenu>
     </template>

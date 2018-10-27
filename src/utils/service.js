@@ -26,5 +26,5 @@ let Service = (options) => {
     });
   });
 }
-
+window.service = Service;
 export default Service;

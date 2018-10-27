@@ -51,7 +51,8 @@ export default {
         "/questionnaire/5",
         "/questionnaire/6"
       ],
-      currentFormData: {}
+      currentFormData: {},
+      fromDataArr: []
     };
   },
   watch: {
@@ -63,16 +64,26 @@ export default {
       this.$router.push({ path: this.steps[this.current] });
     },
     getRouteParams() {
-      let step = this.$route.params.id > this.current ? this.current : this.$route.params.id;
+      let step =
+        this.$route.params.id > this.current
+          ? this.current
+          : this.$route.params.id;
       this.setStep(step);
     },
-    submit() {},
+    submit() {
+      let formData = {};
+      this.fromDataArr.forEach(item => {
+        formData = Object.assign(formData, item);
+      });
+      console.error(formData);
+    },
     nextStep() {
       if (this.current < this.maxStep) {
         this.getCurrentPageData()
           .then(data => {
             let key = "question" + this.current;
             this.$localStorage.set(key, JSON.stringify(data));
+            this.fromDataArr.push(data);
             this.setStep(this.current + 1);
           })
           .catch(e => {

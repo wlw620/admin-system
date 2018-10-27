@@ -24,7 +24,6 @@ const defaultValidate = {
   trigger: "blur"
 };
 export default {
-  // props:['form'],
   data() {
     return {
       schoolTyps: [
@@ -58,7 +57,7 @@ export default {
       return new Promise((resolve, reject) => {
         this.$refs[name].validate(valid => {
           if (valid) {
-            resolve();
+            resolve(this.form);
           } else {
             reject();
           }

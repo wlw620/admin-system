@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    {{login}}
     <loading-component v-if="login===null"></loading-component>
     <login-component v-else-if="!login"></login-component>
     <div v-else-if="login" class="layout">
@@ -78,7 +77,10 @@ export default {
     },
     getLoginState() {
       this.$store.commit("login");
-      this.$store.commit("setIdentity", "*");
+      // this.$store.commit("setIdentity", "*");
+      // this.$store.commit("setIdentity", "mentee");
+      this.$store.commit("setIdentity", "sales");
+      // this.$store.commit("setIdentity", "mentor");
 
       // service
       //   .getLoginState()

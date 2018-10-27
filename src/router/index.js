@@ -27,6 +27,12 @@ import SalesAddcustomer from '@/pages/sales/addcustomer/Index';
 import SalesViewcustomer from '@/pages/sales/viewcustomer/Index';
 
 
+
+//学生端
+import Schoollist from '@/pages/mentee/schoollist/Index';
+import Essays from '@/pages/mentee/essays/Index';
+import Standardtest from '@/pages/mentee/standardtest/Index';
+
 Vue.use(Router);
 
 export default new Router({
@@ -35,6 +41,137 @@ export default new Router({
       name: '首页',
       component: Dashboard
     },
+
+    // mentee: ['mentee_dashboard', 'mentee_information', 'mentee_extracurricular', 'mentee_award', 'mentee_schoollist', 'mentee_essays', 'mentee_preview', 'mentee_other', 'mentee_booklets', 'mentee_history', 'mentee_feedback'],
+
+    // 学员端
+    {
+      path: '/mentee/dashboard',
+      name: '信息总览',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/information',
+      name: '个人信息',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/extracurricular',
+      name: '课外活动',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/standardtest',
+      name: '考试成绩',
+      component: Standardtest
+
+    },
+    {
+      path: '/mentee/awards',
+      name: '成绩奖项',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/schoollist',
+      name: '选校列表',
+      component: Schoollist
+    },
+    {
+      path: '/mentee/essays',
+      name: '申请文书',
+      component: Essays
+    },
+    {
+      path: '/mentee/preview',
+      name: '申请审核',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/other',
+      name: '其他材料',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/booklets',
+      name: '藏经阁',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/history',
+      name: '交流记录',
+      component: Dashboard
+    },
+    {
+      path: '/mentee/feedback',
+      name: '服务反馈',
+      component: Dashboard
+    },
+
+    // 个性化导师
+    {
+      path: '/mentor/dashboard',
+      name: '服务反馈',
+      component:Dashboard
+    },
+    {
+      path: '/mentor/feedback',
+      name: '服务反馈',
+      component:Dashboard
+    },
+    {
+      path: '/mentor/name',
+      name: 'name',
+      component:Dashboard
+    },
+    {
+      path: '/mentor/filetime',
+      name: 'name',
+      component:Dashboard
+    },
+    {
+      path: '/mentor/payment',
+      name: 'name',
+      component:Dashboard
+    },
+    {
+      path: '/mentor/history',
+      name: 'name',
+      component:Dashboard
+    },
+    {
+      path: '/mentor/review',
+      name: 'name',
+      component:Dashboard
+    },
+    {
+      path: '/mentor/training',
+      name: 'name',
+      component:Dashboard
+    },
+
+
+    // 专项导师
+    {
+      path: '/specialist/filetime',
+      name: '填报工时',
+      component: Dashboard
+    },
+    {
+      path: '/specialist/payment',
+      name: '查看工资',
+      component: Dashboard
+    },
+    {
+      path: '/specialist/history',
+      name: '查看工时',
+      component: Dashboard
+    },
+
+
+
+
+
+
     {
       path: '/dashboard',
       name: '信息总览',
@@ -103,7 +240,6 @@ export default new Router({
       name: '工具资源',
       component: Resources
     },
-
 
 
     {

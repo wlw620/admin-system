@@ -1,11 +1,33 @@
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+
+import {
+  menteeList,
+  menteeRole
+} from './mentee';
+
+import {
+  salesList,
+  salesRole
+} from './sales';
+
+import {
+  mentorList,
+  mentorRole
+} from './mentor';
 
 let roleType;
 if (!roleType) {
   roleType = '';
 }
-let roleList = {
-  sales: ['dashboard', 'questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
+
+let roleMap = {
+  // 文书导师
+  esmentor: ['esmentor_year', 'esmentor_name', 'esmentor_training'],
+  // 行政导师
+  opmentor: ['opmentor_year', 'opmentor_review', 'opmentor_training'],
+  // 专项导师
+  specialist: ['specialist_filetime', 'specialist_payment', 'specialist_history'],
+
   intern: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   supervisor: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
   student: ['questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'],
@@ -13,9 +35,12 @@ let roleList = {
   sale: ['adduser'],
   financial: ['paymentinfo', 'viewinternhistory', 'report'],
   '*': [
-    'sales_viewcustomer', 'sales_addcustomer','sales_dashboard', 'resources','adduser','paymentinfo', 'viewinternhistory', 'report','dashboard', 'questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'
+    'mentor_dashboard', 'mentor_mentorprofile', 'mentor_name', 'mentor_filetime', 'mentor_payment', 'mentor_history', 'mentor_review', 'mentor_training',
+    'mentee_dashboard', 'mentee_information', 'mentee_extracurricular', 'mentee_award', 'mentee_schoollist', 'mentee_essays', 'mentee_preview', 'mentee_other', 'mentee_booklets', 'mentee_history', 'mentee_feedback', , 'resources', 'adduser', 'paymentinfo', 'viewinternhistory', 'report', 'dashboard', 'questionnaire', 'dashboard2', 'examination', 'extracurricular', 'prize', 'addschool', 'application', 'suppupload', 'otherupload', 'booklets', 'service'
   ]
 }
+
+roleMap = Object.assign({}, roleMap, salesRole, menteeRole);
 
 let menuList = [{
     link: '/dashboard',
@@ -111,35 +136,83 @@ let menuList = [{
     name: 'report'
   },
 
+  // 文书导师
   {
-    link: '/sales/dashboard',
-    title: '销售信息总览',
-    name: 'sales_dashboard'
+    link: '/esmentor/year',
+    title: '2018',
+    name: 'esmentor_year'
+  },
+  {
+    link: '/esmentor/training',
+    title: '培训材料',
+    name: 'esmentor_training'
   },
 
+  // 行政导师
   {
-    link: '/sales/addcustomer',
-    title: '添加客户',
-    name: 'sales_addcustomer'
+    link: '/opmentor/year',
+    title: '年份学员',
+    name: 'opmentor_year'
+  },
+  {
+    link: '/opmentor/review',
+    title: '打分',
+    name: 'opmentor_review'
+  },
+  {
+    link: '/opmentor/training',
+    title: '培训材料',
+    name: 'opmentor_training'
   },
 
+
+  // 规划导师
   {
-    link: '/sales/viewcustomer',
-    title: '客户人',
-    name: 'sales_viewcustomer'
+    link: '/headmentor/year',
+    title: 'name',
+    name: 'headmentor_year'
+  },
+
+  // 专项导师
+  {
+    link: '/specialist/filetime',
+    title: '填报工时',
+    name: 'specialist_filetime'
+  },
+  {
+    link: '/specialist/payment',
+    title: '查看工资',
+    name: 'specialist_payment'
+  },
+  {
+    link: '/specialist/history',
+    title: '查看工时',
+    name: 'specialist_history'
   }
+
+
+  // 个性化导师 mentor: ['dashboard','mentorprofile', name':['menteeprofile','extracurricular','essays', 'schoollist'],'filetime','payment','history,'review','training']
+
+  // 文书导师 esmentor: ['year':'name':['menteeprofile', 'aclist', 'schoollist','essays'], 'training']
+
+  // 行政导师 opmentor: ['year':'name':['dashboard', 'menteeprofile','preview', 'extracurricular','essays', 'schoollist'],'review':['mentorscore','opmentorscore'],'training']
+
+  // 规划导师 headmentor:['year':'name':['menteeprofile', 'extracurricular', 'schoollist']]
+
+  // 专项导师 specialist:['filetime','payment','history']
 
 ]
 
+menuList = menuList.concat(salesList, menteeList);
+
 let filterFn = (item) => {
-  if (roleList[roleType]) {
-    return roleList[roleType].indexOf(item.name) > -1;
+  if (roleMap[roleType]) {
+    return roleMap[roleType].indexOf(item.name) > -1;
   }
 }
 
-
 export default (type) => {
   roleType = type;
-  console.log(type);
+  console.log("TYPe:", type);
   return menuList.filter(filterFn);
 };
