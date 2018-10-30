@@ -78,8 +78,8 @@ export default {
     getLoginState() {
       this.$store.commit("login");
       // this.$store.commit("setIdentity", "*");
-      // this.$store.commit("setIdentity", "mentee");
-      this.$store.commit("setIdentity", "sales");
+      this.$store.commit("setIdentity", "mentee");
+      // this.$store.commit("setIdentity", "sales");
       // this.$store.commit("setIdentity", "mentor");
 
       // service

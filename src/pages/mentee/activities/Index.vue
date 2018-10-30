@@ -13,10 +13,9 @@
         <Badge dot class="margin-10 fl">
           <Card class="card card-red" :bordered="false">
             <div class="title">
-              <p class="en">Personal Statement</p>
-              <p class="zh">主文书</p>
+              <p class="en">初中以来计划参加所有课外活动</p>
             </div>
-            <div class="card-content">111</div>
+            <div class="card-content">内容占位</div>
             <Divider orientation="center">最后更新</Divider>
             <div class="foot">2018年08月18日</div>
           </Card>
@@ -27,10 +26,35 @@
         <Badge dot class="margin-10 fl">
           <Card class="card card-blue" :bordered="false">
             <div class="title">
-              <p class="en">Personal Statement</p>
-              <p class="zh">主文书</p>
+              <p class="en">目前计划或考虑参加的</p>
             </div>
-            <div class="card-content">111</div>
+            <div class="card-content">内容占位</div>
+            <Divider orientation="center">最后更新</Divider>
+            <div class="foot">2018年08月18日</div>
+          </Card>
+        </Badge>
+      </div>
+
+      <div @click="cardEvent(1)">
+        <Badge dot class="margin-10 fl">
+          <Card class="card card-green" :bordered="false">
+            <div class="title">
+              <p class="en">目前计划或考虑参加的</p>
+            </div>
+            <div class="card-content">内容占位</div>
+            <Divider orientation="center">最后更新</Divider>
+            <div class="foot">2018年08月18日</div>
+          </Card>
+        </Badge>
+      </div>
+
+      <div @click="cardEvent(2)">
+        <Badge dot class="margin-10 fl">
+          <Card class="card card-blue" :bordered="false">
+            <div class="title">
+              <p class="en">目前计划或考虑参加的</p>
+            </div>
+            <div class="card-content">内容占位</div>
             <Divider orientation="center">最后更新</Divider>
             <div class="foot">2018年08月18日</div>
           </Card>
@@ -38,7 +62,7 @@
       </div>
     </div>
 
-    <float-layer>抽屉组件内容。。。</float-layer>
+    <!-- <float-layer>抽屉组件内容。。。</float-layer> -->
 
     <!-- <div :class="detailClasses">
       <h5>文书{{titleTxt}}</h5>
@@ -166,13 +190,19 @@ export default {
     }
   }
 
+  .card-green {
+    .title {
+      background: #14bf62;
+    }
+  }
+
   .card {
     position: relative;
     width: 180px;
     height: 240px;
     .title {
       position: absolute;
-      padding: 10px 0 0 10px;
+      padding: 10px 10px 0 10px;
       width: 100%;
       left: 0;
       border-top-left-radius: 4px;

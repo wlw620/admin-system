@@ -3,7 +3,6 @@ import Router from 'vue-router';
 import Dashboard from '@/pages/dashboard/Index';
 import Dashboard2 from '@/pages/dashboard2/Index';
 import Addschool from '@/pages/addschool/Index';
-import Extracurricular from '@/pages/extracurricular/Index';
 
 import Planning from '@/pages/planning/Index';
 import Psupload from '@/pages/psupload/Index';
@@ -29,9 +28,12 @@ import SalesViewcustomer from '@/pages/sales/viewcustomer/Index';
 
 
 //学生端
+import MenteeDashboard from '@/pages/mentee/dashboard/Index'; //信息总览
+import Activities from '@/pages/mentee/activities/Index'; //课外活动
+import Awards from '@/pages/mentee/awards/Index';
+import Standardtest from '@/pages/mentee/standardtest/Index';
 import Schoollist from '@/pages/mentee/schoollist/Index';
 import Essays from '@/pages/mentee/essays/Index';
-import Standardtest from '@/pages/mentee/standardtest/Index';
 
 Vue.use(Router);
 
@@ -42,34 +44,33 @@ export default new Router({
       component: Dashboard
     },
 
-    // mentee: ['mentee_dashboard', 'mentee_information', 'mentee_extracurricular', 'mentee_award', 'mentee_schoollist', 'mentee_essays', 'mentee_preview', 'mentee_other', 'mentee_booklets', 'mentee_history', 'mentee_feedback'],
+    // mentee: ['mentee_dashboard', 'mentee_information', 'mentee_activities', 'mentee_award', 'mentee_schoollist', 'mentee_essays', 'mentee_preview', 'mentee_other', 'mentee_booklets', 'mentee_history', 'mentee_feedback'],
 
     // 学员端
     {
       path: '/mentee/dashboard',
       name: '信息总览',
-      component: Dashboard
+      component: MenteeDashboard
     },
+    // {
+    //   path: '/mentee/information',
+    //   name: '个人信息',
+    //   component: Dashboard
+    // },
     {
-      path: '/mentee/information',
-      name: '个人信息',
-      component: Dashboard
-    },
-    {
-      path: '/mentee/extracurricular',
+      path: '/mentee/activities',
       name: '课外活动',
-      component: Dashboard
+      component: Activities
     },
     {
       path: '/mentee/standardtest',
       name: '考试成绩',
       component: Standardtest
-
     },
     {
       path: '/mentee/awards',
-      name: '成绩奖项',
-      component: Dashboard
+      name: '竞赛奖项',
+      component: Awards
     },
     {
       path: '/mentee/schoollist',
@@ -181,11 +182,12 @@ export default new Router({
       path: '/dashboard2',
       name: '信息总览',
       component: Dashboard2
-    },{
-      path: '/extracurricular',
-      name: '课外活动',
-      component: Extracurricular
     },
+    // {
+    //   path: '/extracurricular',
+    //   name: '课外活动',
+    //   component: Extracurricular
+    // },
     {
       path: '/addschool',
       name: '选择学校',

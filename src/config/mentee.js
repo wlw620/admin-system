@@ -3,8 +3,8 @@ let menteeRole = {
   mentee: [
     'mentee_dashboard',
     'mentee_information',
-    'mentee_extracurricular',
-    'mentee_award',
+    'mentee_activities',
+    'mentee_awards',
     'mentee_standardtest',
     'mentee_schoollist',
     'mentee_essays',
