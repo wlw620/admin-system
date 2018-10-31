@@ -9,7 +9,6 @@ import Psupload from '@/pages/psupload/Index';
 import Addtopics from '@/pages/addtopics/Index';
 import Suppupload from '@/pages/suppupload/Index';
 import Otherupload from '@/pages/otherupload/Index';
-import Booklets from '@/pages/booklets/Index';
 import Resources from '@/pages/resources/Index';
 import Application from '@/pages/application/Index';
 import Prize from '@/pages/prize/Index';
@@ -34,6 +33,9 @@ import Awards from '@/pages/mentee/awards/Index';
 import Standardtest from '@/pages/mentee/standardtest/Index';
 import Schoollist from '@/pages/mentee/schoollist/Index';
 import Essays from '@/pages/mentee/essays/Index';
+import Booklets from '@/pages/mentee/booklets/Index';
+import OtherUpload from '@/pages/mentee/other/Index';
+import Preview from '@/pages/mentee/preview/Index';
 
 Vue.use(Router);
 
@@ -85,17 +87,17 @@ export default new Router({
     {
       path: '/mentee/preview',
       name: '申请审核',
-      component: Dashboard
+      component: Preview
     },
     {
       path: '/mentee/other',
       name: '其他材料',
-      component: Dashboard
+      component: OtherUpload
     },
     {
       path: '/mentee/booklets',
       name: '藏经阁',
-      component: Dashboard
+      component: Booklets
     },
     {
       path: '/mentee/history',

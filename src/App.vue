@@ -65,20 +65,21 @@ export default {
   },
   methods: {
     logout() {
-        service.logout()
+      service
+        .logout()
         .then(res => {
           if (res && res.identity) {
             let some = "unlogin";
             this.$store.commit(some);
           }
         })
-        .catch(e => {
-        });
+        .catch(e => {});
     },
     getLoginState() {
       this.$store.commit("login");
       // this.$store.commit("setIdentity", "*");
       this.$store.commit("setIdentity", "mentee");
+      this.$router.push('/mentee/dashboard');
       // this.$store.commit("setIdentity", "sales");
       // this.$store.commit("setIdentity", "mentor");
 

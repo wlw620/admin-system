@@ -49,6 +49,7 @@ export default {
           } else {
             this.$store.commit("login");
             this.$store.commit("setIdentity", res.identity);
+            this.route
           }
         })
         .catch(e => {
