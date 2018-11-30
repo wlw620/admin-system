@@ -1,5 +1,4 @@
 // 销售
-
 let salesRole = {
   sales: [
     'sales_viewcustomer',

@@ -2,7 +2,8 @@
   <div>
 
     <div :class="pageClasses">
-      <div @click="cardEvent('add')">
+
+      <div @click="eventAddEssays">
         <Card class="card card-add margin-10 fl" :bordered="false">
           <Icon type="md-add" size="110" color="#ccc" />
           <h2 style="color:#ccc">添加文书</h2>
@@ -36,38 +37,54 @@
           </Card>
         </Badge>
       </div>
+
+
+      <div v-for="item in essaysList" :key="item.id" @click="cardEvent(item.id)">
+        <Badge dot class="margin-10 fl">
+          <Card class="card card-blue" :bordered="false">
+            <div class="title">
+              <p class="en">{{ item.type }}</p>
+              <p class="zh">{{ item.topic }}</p>
+            </div>
+            <div class="card-content">{{ item.title }}</div>
+            <Divider orientation="center">最后更新</Divider>
+            <div class="foot">{{ item.last_update_time }}</div>
+          </Card>
+        </Badge>
+      </div>
+
     </div>
 
-    <float-layer>抽屉组件内容。。。</float-layer>
 
-    <!-- <div :class="detailClasses">
-      <h5>文书{{titleTxt}}</h5>
-      <div class="margin-20">
-        <Upload multiple type="drag" action="//jsonplaceholder.typicode.com/posts/">
-          <div style="padding: 20px 0">
-            <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-            <p>Click or drag files here to upload</p>
-          </div>
-        </Upload>
+    <Modal
+      v-model="isModelDisplay"
+      title="添加文书"
+      @on-ok="ok"
+      @on-cancel="cancel">
+      <add-essays></add-essays>
+    </Modal>
 
-        <Table class="margin-t-20" :columns="columns1" :data="data1"></Table>
+    <float-layer v-if="isLayerDisplay">抽屉组件内容。。。</float-layer>
 
-      </div>
-    </div> -->
   </div>
 </template>
 
 <script>
+import moment from "moment";
 import floatLayer from "../../../components/FloatLayer";
+import addEssays from "./AddEssays";
+import service from "../../../service/mentee/essays";
 export default {
   data() {
     return {
+      isModelDisplay: false,
+      isLayerDisplay: false,
       titleTxt: "",
       currentCardId: "",
       addCardFlag: false,
       detailFlag: false,
       foldFlah: false,
-
+      essaysList: [],
       columns1: [
         {
           title: "Time",
@@ -101,6 +118,9 @@ export default {
       ]
     };
   },
+  mounted() {
+    this.init();
+  },
   computed: {
     pageClasses() {
       return ["container-box", "application-container"];
@@ -110,6 +130,32 @@ export default {
     }
   },
   methods: {
+    init() {
+      service.getMainData().then(res => {
+        this.essaysList = res;
+      }).catch(()=>{
+        let day = moment(1541463701).format('YYYY年MM月DD日');
+        this.essaysList = [
+          {
+            id: 1,
+            type: "PS",
+            topic: "yolo",
+            title: "asd po awewq",
+            description: "blablablabla",
+            "last_update_time": day,
+            edited: 0
+          }
+        ];
+      });
+
+
+
+
+
+    },
+    eventAddEssays() {
+      this.isModelDisplay = true;
+    },
     cardEvent(id) {
       if (id === this.currentCardId) {
         this.foldFlah = false;
@@ -119,10 +165,13 @@ export default {
         this.currentCardId = id;
       }
       this.$set(this, "titleTxt", id);
-    }
+    },
+    ok() {},
+    cancel() {}
   },
   components: {
-    'float-layer': floatLayer
+    "float-layer": floatLayer,
+    "add-essays": addEssays
   }
 };
 </script>

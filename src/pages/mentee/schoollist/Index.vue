@@ -2,23 +2,25 @@
   <div class="container-box">
     <Row>
       <Card :bordered="false" class="margin-b-20">
-        <Form :mode="reqInfo" label-position="top">
+        <Form :mode="formData" label-position="top">
           <Col span="10" class="col">
           <FormItem :label="$t('addschool.schoolnameTit')">
-            <Select :model="reqInfo.schoolName" ref="addschoolSelect" :placeholder="$t('addschool.choose')" @on-open-change="onOpen" filterable clearable>
-              <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Select :model="formData.schoolid" :placeholder="$t('addschool.choose')" filterable clearable>
+              <Option v-for="item in schoollist" :value="item.schoolid" :key="item.schoolid">{{ item.schoolname }}</Option>
             </Select>
           </FormItem>
           </Col>
           <Col span="10" class="col">
           <FormItem :label="$t('addschool.batchTit')">
-            <Select :model="reqInfo.batch">
-              <Option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</Option>
+            <Select :model="formData.batch">
+              <Option value="regular">RD/Rolling</Option>
+              <Option value="earlyone">EA/ED/REA</Option>
+              <Option value="earlytwo">ED2</Option>
             </Select>
           </FormItem>
           </Col>
           <Col span="4" class="col">
-          <Button class="buttom" type="primary">
+          <Button class="buttom" type="primary" @click="addSchool">
             {{$t("addschool.submitTxt")}}
           </Button>
           </Col>
@@ -27,13 +29,14 @@
     </Row>
     <Row>
       <Card :bordered="false" class="margin-b-20">
-        <Table :columns="columns" :data="data"></Table>
+        <Table :columns="columns" :data="listData"></Table>
       </Card>
     </Row>
   </div>
 </template>
 
 <script>
+import service from "../../../service/mentee/schoollist";
 import expandRow from "./expand";
 
 export default {
@@ -42,128 +45,89 @@ export default {
     return {
       columns: [
         {
-          type: "expand",
-          width: 50,
+          title: "学校",
+          key: "schoolname",
           render: (h, params) => {
-            return h(expandRow, {
-              props: {
-                row: params.row
-              }
-            });
+            return h("div", [
+              h("span", params.row.schoolname + " " + params.row.schoolcname)
+            ]);
           }
         },
         {
-          title: this.$t('addschool.tabTitle1'),
-          key: "name"
+          title: "学校类型",
+          key: "schooltype"
         },
         {
-          title: this.$t('addschool.tabTitle2'),
-          key: "age"
+          title: "Supp数量",
+          key: "supp"
         },
         {
-          title: this.$t('addschool.tabTitle3'),
-          key: "address"
+          title: "申请批次",
+          key: "cycle"
         },
         {
-          title: this.$t('addschool.tabTitle4'),
-          key: "address"
+          title: "截止日期",
+          key: "deadline"
         },
         {
-          title: this.$t('addschool.tabTitle1'),
-          key: "address"
-        },
-        {
-          title: this.$t('addschool.tabTitle5'),
-          key: "address"
-        },
-         {
-          title: this.$t('addschool.tabTitle6'),
-          key: "address"
+          title: "删除学校",
+          key: "remove",
+          render: (h, params) => {
+            h(
+              "Button",
+              {
+                props: {
+                  type: "error",
+                  size: "small"
+                },
+                on: {
+                  click: () => {
+                    this.remove(params.index);
+                  }
+                }
+              },
+              "Remove"
+            );
+          }
         }
       ],
-      data: [
-        {
-          name: "John Brown",
-          age: 18,
-          address: "New York No. 1 Lake Park",
-          job: "Data engineer",
-          interest: "badminton",
-          birthday: "1991-05-14",
-          book: "Steve Jobs",
-          movie: "The Prestige",
-          music: "I Cry"
-        },
-        {
-          name: "Jim Green",
-          age: 25,
-          address: "London No. 1 Lake Park",
-          job: "Data Scientist",
-          interest: "volleyball",
-          birthday: "1989-03-18",
-          book: "My Struggle",
-          movie: "Roman Holiday",
-          music: "My Heart Will Go On"
-        },
-        {
-          name: "Joe Black",
-          age: 30,
-          address: "Sydney No. 1 Lake Park",
-          job: "Data Product Manager",
-          interest: "tennis",
-          birthday: "1992-01-31",
-          book: "Win",
-          movie: "Jobs",
-          music: "Don’t Cry"
-        },
-        {
-          name: "Jon Snow",
-          age: 26,
-          address: "Ottawa No. 2 Lake Park",
-          job: "Data Analyst",
-          interest: "snooker",
-          birthday: "1988-7-25",
-          book: "A Dream in Red Mansions",
-          movie: "A Chinese Ghost Story",
-          music: "actor"
-        }
-      ],
-
-      cityList: [
-        {
-          value: "New York",
-          label: "New York"
-        },
-        {
-          value: "London",
-          label: "London"
-        },
-        {
-          value: "Sydney",
-          label: "Sydney"
-        },
-        {
-          value: "Ottawa",
-          label: "Ottawa"
-        },
-        {
-          value: "Paris",
-          label: "Paris"
-        },
-        {
-          value: "Canberra",
-          label: "Canberra"
-        }
-      ],
-      reqInfo: {
-        schoolName: "",
-        batch: ""
+      listData: [],
+      schoollist: [],
+      formData: {
+        schoolid: "",
+        cycle: "regular"
       }
     };
   },
   methods: {
-    onOpen(isOpen) {
-      //  this.refs.addschoolSelect.setQuery('');
+    init() {
+      this.getMainData();
+    },
+    getMainData() {
+      service.getMainData().then(res => {
+        this.schoollist = res.schoollist;
+        this.listData = res.selectedschools;
+        this.formData.schoolid = this.schoollist[0].schoolid;
+      });
+    },
+    remove(index) {
+      let param = {
+        schoolid:1,
+        cycle:1
+      };
+
+      service.removeSchool();
+    },
+    onOpen(isOpen) {},
+    addSchool() {
+      let params = formData;
+      service.addSchool(params).then(res => {
+        this.getMainData();
+      });
     }
+  },
+  mounted() {
+    this.init();
   }
 };
 </script>

@@ -28,7 +28,9 @@ let mentorList = [
     link: '/mentor/name',
     title: '学员姓名',
     name: 'mentor_name',
-    children: []
+    children: [{ link: '/mentor/filetime',
+    title: '填报工时',
+    name: 'mentor_filetime'}]
   },
   {
     link: '/mentor/filetime',

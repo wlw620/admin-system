@@ -1,6 +1,7 @@
 import axios from 'axios';
 axios.defaults.withCredentials = true;
 let defOpts = {
+  method: 'get',
   headers: {
     'Content-Type': 'application/json',
     // 'Content-Type': 'application/x-www-form-urlencoded'

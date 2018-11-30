@@ -16,7 +16,8 @@ let menteeRole = {
   ],
 };
 
-let menteeList = [{
+let menteeList = [
+  {
     link: '/mentee/dashboard',
     title: '信息总览',
     name: 'mentee_dashboard'
@@ -75,7 +76,7 @@ let menteeList = [{
     link: '/mentee/feedback',
     title: '服务反馈',
     name: 'mentee_feedback',
-  },
+  }
 ];
 
 export {

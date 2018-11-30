@@ -83,6 +83,8 @@
 
 <script>
 import floatLayer from "../../../components/FloatLayer";
+import service from "../../../service/mentee/activities";
+
 export default {
   data() {
     return {
@@ -145,8 +147,13 @@ export default {
       this.$set(this, "titleTxt", id);
     }
   },
+  mounted() {
+    service.getMainData().then(res => {
+
+    });
+  },
   components: {
-    'float-layer': floatLayer
+    "float-layer": floatLayer
   }
 };
 </script>

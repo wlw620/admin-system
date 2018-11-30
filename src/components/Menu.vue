@@ -1,5 +1,10 @@
 <template>
-  <Menu theme="light" width="auto" :class="menuitemClasses" :active-name="activename">
+  <Menu
+    theme="light" width="auto"
+    :class="menuitemClasses"
+    :active-name="activename"
+    :open-names="openname"
+  >
     <!-- logo -->
     <div class="logo-con">
       <img src="../static/imgs/logo.png" alt="三士渡教育">
@@ -12,12 +17,13 @@
       <Icon type="ios-paper" />
       <span>{{item.title}}</span>
       </MenuItem>
-      <Submenu v-else>
+      <Submenu :name="item.name" v-else>
         <template slot="title">
           <Icon type="ios-people" />
           <span>{{item.title}}</span>
         </template>
-        <MenuItem :name="childItem.name" v-for="childItem in item.children" :to="childItem.link"> {{childItem.title}}
+        <MenuItem v-for="childItem in item.children" :name="childItem.name" :to="childItem.link">
+          {{ childItem.title }}
         </MenuItem>
       </Submenu>
     </template>
@@ -35,6 +41,6 @@ export default {
       menuList: menuList(this.$store.state.identity)
     };
   },
-  props: ["activename", "menuitemClasses"]
+  props: ["activename", "openname", "menuitemClasses"]
 };
 </script>
