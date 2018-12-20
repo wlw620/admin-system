@@ -7,6 +7,7 @@ import Schoollist from '@/pages/mentee/schoollist/Index';
 import Essays from '@/pages/mentee/essays/Index';
 import Booklets from '@/pages/mentee/booklets/Index';
 import OtherUpload from '@/pages/mentee/other/Index';
+import Historys from '@/pages/mentee/historys/Index';
 import Preview from '@/pages/mentee/preview/Index';
 
 
@@ -65,7 +66,7 @@ export default [
   {
     path: '/mentee/history',
     name: '交流记录',
-    component: OtherUpload
+    component: Historys
   },
   {
     path: '/mentee/feedback',

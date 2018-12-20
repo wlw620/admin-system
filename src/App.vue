@@ -27,7 +27,7 @@
         <!--右侧内容-->
         <Layout :class="rightClasses">
           <Header class="header">
-            <a style="color:#fff" @click="logout">退出登录</a>
+            <a class="logout" @click="logout">退出登录</a>
           </Header>
           <Content class="content">
             <div class="container">
@@ -144,6 +144,7 @@ export default {
         //     this.$store.commit("unlogin");
         //     resolve();
         //   });
+
       });
     },
 

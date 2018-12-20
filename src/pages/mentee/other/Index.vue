@@ -5,7 +5,11 @@
         <Row class="query-row" :gutter="16">
           <Col :md="8" :sm="12" :xs="24">
           <FormItem label="选择类型">
-            <Input v-model="query.Intern"></Input>
+             <Select v-model="teacherList" placeholder="选择类型">
+              <Option value="beijing">New York</Option>
+              <Option value="shanghai">London</Option>
+              <Option value="shenzhen">Sydney</Option>
+            </Select>
           </FormItem>
           </Col>
           <Col :md="8" :sm="12" :xs="24">
@@ -17,7 +21,7 @@
           </Col>
           <Col :md="8" :sm="12" :xs="24">
           <FormItem label="选择导师">
-            <Select v-model="teacherList" placeholder="Select your city">
+            <Select v-model="teacherList" placeholder="选择导师">
               <Option value="beijing">New York</Option>
               <Option value="shanghai">London</Option>
               <Option value="shenzhen">Sydney</Option>

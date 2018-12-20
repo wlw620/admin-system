@@ -15,10 +15,10 @@
       </Select>
     </FormItem>
     <FormItem label="文案" prop="type">
-      <Input v-model="formData.text" placeholder="Enter something..."></Input>
+      <Input v-model="formData.text" placeholder="Enter something..."/>
     </FormItem>
     <FormItem label="描述" prop="type">
-      <Input v-model="formData.text" type="textarea" :autosize="{minRows: 4,maxRows: 7}" placeholder="Enter something..."></Input>
+      <Input v-model="formData.text" type="textarea" :autosize="{minRows: 4,maxRows: 7}" placeholder="Enter something..."/>
     </FormItem>
   </Form>
 </template>
