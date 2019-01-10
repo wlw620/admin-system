@@ -4,9 +4,9 @@
     <login-component v-else-if="!login"></login-component>
     <div v-else-if="login" class="layout">
       <Layout :style="{minHeight: '100vh'}">
-
         <!--左侧菜单-->
-        <Sider collapsible
+        <Sider
+          collapsible
           theme="light"
           :style="{
             position: 'fixed',
@@ -23,7 +23,6 @@
           ></menu-component>
         </Sider>
         <!--左侧菜单 END-->
-
         <!--右侧内容-->
         <Layout :class="rightClasses">
           <Header class="header">
@@ -36,7 +35,6 @@
           </Content>
         </Layout>
         <!--右侧内容-->
-
       </Layout>
     </div>
   </div>
@@ -105,6 +103,7 @@ export default {
     getLoginState() {
       return new Promise((resolve, reject) => {
         let type = [
+          "*",
           "mentee", // 学员
           "mentor", // 个性化导师
           "esmentor", // 文书导师
@@ -114,37 +113,37 @@ export default {
         ][0];
 
         // debugger;
-        let currentList = menuList(type);
+        // let currentList = menuList(type);
 
-        let defPageUrl = this.getChildrenItem(currentList).link;
-        this.$store.commit("login");
-        this.$store.commit("setIdentity", type);
-        this.$router.replace(defPageUrl);
-        resolve();
+        // let defPageUrl = this.getChildrenItem(currentList).link;
+        // this.$store.commit("login");
+        // this.$store.commit("setIdentity", type);
+        // this.$router.replace(defPageUrl);
+        // resolve();
 
-        //TODO 暂无导师数据，需要确定数据个时候 动态变更menu
+        // TODO 暂无导师数据，需要确定数据个时候 动态变更menu
+        // this.$store.commit("unlogin");
 
-        // service
-        //   .getLoginState()
-        //   .then(res => {
-        //     let some = "unlogin";
-        //     if (res && res.identity) {
-        //       some = "login";
-        //       console.log("角色:::" + res.identity);
-        //       let type = res.identity;
-        //       let defPageUrl = menuList(type)[0].link;
-        //       this.$store.commit("login");
-        //       this.$store.commit("setIdentity", type);
-        //       this.$router.replace(defPageUrl);
-        //     }
-        //     this.$store.commit(some);
-        //     resolve();
-        //   })
-        //   .catch(e => {
-        //     this.$store.commit("unlogin");
-        //     resolve();
-        //   });
-
+        service
+          .getLoginState()
+          .then(res => {
+            let some = "unlogin";
+            if (res && res.identity) {
+              some = "login";
+              console.log("角色:::" + res.identity);
+              let type = res.identity;
+              let defPageUrl = menuList(type)[0].link;
+              this.$store.commit("login");
+              this.$store.commit("setIdentity", type);
+              this.$router.replace(defPageUrl);
+            }
+            this.$store.commit(some);
+            resolve();
+          })
+          .catch(e => {
+            this.$store.commit("unlogin");
+            resolve();
+          });
       });
     },
 

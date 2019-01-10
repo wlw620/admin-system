@@ -26,8 +26,25 @@ export default {
       data: params
     });
   },
-
-  removeProject(){
+  essayhistory(pid){
+    return Service({
+      url: host + 'mentee/essayhistory/' + pid
+    });
+  },
+  upload(params) {
+    return Service({
+      method: 'post',
+      url: host + 'mentee/uploader',
+      data: params
+    });
+  },
+  download(params){
+    return Service({
+      url: host + 'mentee/download',
+      data: params
+    });
+  },
+  removeProject(params) {
     // {pid: 文书id}
     return Service({
       method: 'post',

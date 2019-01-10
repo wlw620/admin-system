@@ -48,7 +48,7 @@ let otherList = [{
     name: 'application',
   },
   {
-    link: '/questionnaire',
+    link: '/questionnaire/0',
     title: '调查问卷',
     name: 'questionnaire',
   },

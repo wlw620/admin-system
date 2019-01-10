@@ -46,7 +46,7 @@ module.exports = {
     birthday: '您的生日',
     male: '男',
     female: '女',
-    wx: '您的微信号',
+    wechat: '微信号',
     email: '您的邮箱',
     phone: '您的电话',
     schoolName: "您就读的学校?",

@@ -1,136 +1,55 @@
 <template>
   <div>
-
     <div :class="pageClasses">
-      <Collapse simple v-model="arr">
 
-        <Panel name="1">
-          英语能力
-          <div slot="content" style="overflow:hidden">
-            <Divider class="black" />
-
-            <div @click="cardEvent('add', '1')">
-              <Card class="card card-add margin-10 fl" :bordered="false">
-                <Icon type="md-add" size="110" color="#ccc" />
-                <h2 style="color:#ccc">添加成绩</h2>
-              </Card>
-            </div>
-
-            <div @click="cardEvent('edit', '1')">
-              <Badge dot class="margin-10 fl">
-                <Card class="card card-red" :bordered="false">
-                  <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
-                  </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
-                </Card>
-              </Badge>
-            </div>
-
+      <Tabs :animated="false">
+        <TabPane label="标化考试">
+          <div @click="add('add', '1')">
+            <Card class="card card-add margin-10 fl" :bordered="false">
+              <Icon type="md-add" size="110" color="#ccc" />
+              <h2 style="color:#ccc">添加成绩</h2>
+            </Card>
           </div>
-        </Panel>
 
+          <div @click="cardEvent('edit', '1')">
+            <Badge dot class="margin-10 fl">
+              <Card class="card card-red" :bordered="false">
+                <div class="title">
+                  <p class="en">SAT</p>
+                  <p class="zh">2018年08月18日</p>
+                </div>
+                <div class="card-content">
 
-        <Panel name="2">
-          美国高考
-          <div slot="content" style="overflow:hidden">
-            <Divider class="black" />
-            <div @click="cardEvent('add', '2')">
-              <Card class="card card-add margin-10 fl" :bordered="false">
-                <Icon type="md-add" size="110" color="#ccc" />
-                <h2 style="color:#ccc">添加成绩</h2>
+                </div>
               </Card>
-            </div>
-
-            <div @click="cardEvent(1)">
-              <Badge dot class="margin-10 fl">
-                <Card class="card card-red" :bordered="false">
-                  <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
-                  </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
-                </Card>
-              </Badge>
-            </div>
-
+            </Badge>
           </div>
-        </Panel>
 
-
-        <Panel name="3">
-          单项考试
-          <div slot="content" style="overflow:hidden">
-            <Divider class="black" />
-            <div @click="cardEvent('add', '3')">
-              <Card class="card card-add margin-10 fl" :bordered="false">
-                <Icon type="md-add" size="110" color="#ccc" />
-                <h2 style="color:#ccc">添加成绩</h2>
+          <div @click="cardEvent('edit', '2')">
+            <Badge dot class="margin-10 fl">
+              <Card class="card card-blue" :bordered="false">
+                <div class="title">
+                  <p class="en">TOEFL</p>
+                  <p class="zh">2018年08月18日</p>
+                </div>
+                <div class="card-content">
+                  Reading - 30<br> Listening - 30<br> Speaking - 30<br> Writing - 30<br>
+                </div>
               </Card>
-            </div>
-
-            <div @click="cardEvent(1)">
-              <Badge dot class="margin-10 fl">
-                <Card class="card card-red" :bordered="false">
-                  <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
-                  </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
-                </Card>
-              </Badge>
-            </div>
-            <div @click="cardEvent(2)">
-              <Badge dot class="margin-10 fl">
-                <Card class="card card-blue" :bordered="false">
-                  <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
-                  </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
-                </Card>
-              </Badge>
-            </div>
+            </Badge>
           </div>
-        </Panel>
+        </TabPane>
 
-        <Panel name="4">
-          学位体系
-          <div slot="content" style="overflow:hidden">
-            <Divider class="black" />
-            <div @click="cardEvent('add', '')">
-              <Card class="card card-add margin-10 fl" :bordered="false">
-                <Icon type="md-add" size="110" color="#ccc" />
-                <h2 style="color:#ccc">添加成绩</h2>
-              </Card>
-            </div>
-
-            <div @click="cardEvent(1)">
-              <Badge dot class="margin-10 fl">
-                <Card class="card card-red" :bordered="false">
-                  <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
-                  </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
-                </Card>
-              </Badge>
-            </div>
-
+        <TabPane label="校内成绩">
+          <div @click="add('add', '1')">
+            <Card class="card card-add margin-10 fl" :bordered="false">
+              <Icon type="md-add" size="110" color="#ccc" />
+              <h2 style="color:#ccc">添加成绩</h2>
+            </Card>
           </div>
-        </Panel>
-      </Collapse>
+        </TabPane>
+
+      </Tabs>
 
     </div>
 
@@ -160,7 +79,7 @@
             <Radio label="female">Female</Radio>
           </RadioGroup>
         </FormItem>
-        <FormItem label="Switch">
+        <FormItem label="Switch">T
           <i-switch v-model="formData.switch" size="large">
             <span slot="open">On</span>
             <span slot="close">Off</span>
@@ -179,6 +98,52 @@
       </Form>
     </float-layer>
 
+
+    <Modal v-model="modelDisplay" title="添加成绩" @on-ok="submit" @on-cancel="cancel">
+      <div style="width:370px; margin-left:30px;">
+        <Form :label-width="130">
+          <FormItem label="类型" prop="type">
+            <Select v-model="formData.type" placeholder="type">
+              <Option value="SAT">SAT</Option>
+              <Option value="TOEFL">TOEFL</Option>
+            </Select>
+          </FormItem>
+          <FormItem label="时间" prop="type">
+            <DatePicker style="width:240px;" type="date" placeholder="Select date" v-model="formData.date"></DatePicker>
+          </FormItem>
+          <div v-if="formData.type === 'TOEFL'">
+            <!--最多30分-->
+            <FormItem label="Reading" prop="type">
+              <Input width="180" v-model="formData.Reading" placeholder="..." />
+            </FormItem>
+            <FormItem label="Listening" prop="type">
+              <Input v-model="formData.Listening" placeholder="..." />
+            </FormItem>
+            <FormItem label="Speaking" prop="type">
+              <Input v-model="formData.Speaking" placeholder="..." />
+            </FormItem>
+            <FormItem label="Writing" prop="type">
+              <Input v-model="formData.Writing" placeholder="..." />
+            </FormItem>
+          </div>
+          <div v-else-if="formData.type === 'SAT'">
+            <!--最多30分 800 800 1600-->
+            <FormItem label="Reading and Writing" prop="type">
+              <Input width="180" v-model="formData.text" placeholder="..." />
+            </FormItem>
+            <FormItem label="Math" prop="type">
+              <Input v-model="formData.text" placeholder="..." />
+            </FormItem>
+            <FormItem label="Total" prop="type">
+              <Input v-model="formData.text" placeholder="..." />
+            </FormItem>
+          </div>
+        </Form>
+      </div>
+    </Modal>
+
+    </div>
+
   </div>
 </template>
 
@@ -188,8 +153,10 @@
     data() {
       return {
         formData: {
+          type: 'SAT',
           slider: [20, 50],
         },
+        modelDisplay: false,
         foldDisplayFlag: false,
         title: "",
         arr: [1],
@@ -207,6 +174,11 @@
       doSomething() {
         this.foldDisplayFlag = false;
       },
+      add() {
+        this.modelDisplay = true;
+      },
+      submit() {},
+      cancel() {},
       cardEvent(type, id) {
         let title = '';
         switch (+id) {
@@ -235,6 +207,20 @@
 
 
 <style lang="less">
+  .flex {
+    display: flex;
+    div {
+      flex: 1
+    }
+  }
+
+  .flex-item {
+    display: flex;
+    span {
+      padding-right: 10px;
+    }
+  }
+
   .ivu-collapse-content {
     background: none;
   }

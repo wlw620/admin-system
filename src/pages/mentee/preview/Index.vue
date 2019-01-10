@@ -3,20 +3,20 @@
     <Card :bordered="false">
       <Form :model="query" label-position="top">
         <Row class="query-row" :gutter="16">
+
+          <Col :md="12" :sm="12" :xs="24">
+          <FormItem label="选择学校">
+            <Select v-model="teacherList" placeholder="Select your school">
+              <Option value="beijing">Harvard University</Option>
+              <Option value="shanghai">Cornell University</Option>
+            </Select>
+          </FormItem>
+          </Col>
           <Col :md="12" :sm="12" :xs="24">
           <FormItem label="选择文件">
             <Upload style="width:100%" :before-upload="handleUpload" action="//jsonplaceholder.typicode.com/posts/">
               <Button icon="ios-cloud-upload-outline">选择文件</Button>
             </Upload>
-          </FormItem>
-          </Col>
-          <Col :md="12" :sm="12" :xs="24">
-          <FormItem label="选择学校">
-            <Select v-model="teacherList" placeholder="Select your city">
-              <Option value="beijing">New York</Option>
-              <Option value="shanghai">London</Option>
-              <Option value="shenzhen">Sydney</Option>
-            </Select>
           </FormItem>
           </Col>
         </Row>

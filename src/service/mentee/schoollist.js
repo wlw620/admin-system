@@ -5,7 +5,7 @@ const host = conf.host;
 export default {
   getMainData(params) {
     return Service({
-      url: host + 'mentee/addschool',
+      url: host + 'mentee/schoollist',
       data: params
     });
   },

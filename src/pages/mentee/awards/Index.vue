@@ -4,25 +4,22 @@
     <div :class="pageClasses">
       <Collapse simple v-model="arr">
         <Panel name="1">
-          初中以来参加过的竞赛
+          初中以来参加过的
           <div slot="content" style="overflow:hidden">
-            <Divider class="black" />
-            <div @click="cardEvent('add')">
+            <div @click="add('add')">
               <Card class="card card-add margin-10 fl" :bordered="false">
                 <Icon type="md-add" size="110" color="#ccc" />
-                <h2 style="color:#ccc">添加活动</h2>
+                <h2 style="color:#ccc">添加奖项</h2>
               </Card>
             </div>
             <div @click="cardEvent(1)">
               <Badge dot class="margin-10 fl">
                 <Card class="card card-red" :bordered="false">
                   <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
+                    <p class="en">社区活动</p>
+                    <p class="zh">给小朋友教书</p>
                   </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
+                  <div class="card-content">一周3次给社区小朋友教书</div>
                 </Card>
               </Badge>
             </div>
@@ -30,38 +27,33 @@
               <Badge dot class="margin-10 fl">
                 <Card class="card card-blue" :bordered="false">
                   <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
+                    <p class="en">社区活动</p>
+                    <p class="zh">给小朋友教书</p>
                   </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
+                  <div class="card-content">一周3次给社区小朋友教书</div>
                 </Card>
               </Badge>
             </div>
           </div>
         </Panel>
+
         <Panel name="2">
-          目前计划或考虑参加的竞赛
+          目前已计划在准备的
           <div slot="content" style="overflow:hidden">
-            <Divider class="black" />
-            <div @click="cardEvent('add')">
+            <div @click="add('add')">
               <Card class="card card-add margin-10 fl" :bordered="false">
                 <Icon type="md-add" size="110" color="#ccc" />
-                <h2 style="color:#ccc">添加活动</h2>
+                <h2 style="color:#ccc">添加奖项</h2>
               </Card>
             </div>
-
             <div @click="cardEvent(1)">
               <Badge dot class="margin-10 fl">
                 <Card class="card card-red" :bordered="false">
                   <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
+                    <p class="en">社区活动</p>
+                    <p class="zh">给小朋友教书</p>
                   </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
+                  <div class="card-content">一周3次给社区小朋友教书</div>
                 </Card>
               </Badge>
             </div>
@@ -69,20 +61,87 @@
               <Badge dot class="margin-10 fl">
                 <Card class="card card-blue" :bordered="false">
                   <div class="title">
-                    <p class="en">Personal Statement</p>
-                    <p class="zh">主文书</p>
+                    <p class="en">社区活动</p>
+                    <p class="zh">给小朋友教书</p>
                   </div>
-                  <div class="card-content">111</div>
-                  <Divider orientation="center">最后更新</Divider>
-                  <div class="foot">2018年08月18日</div>
+                  <div class="card-content">一周3次给社区小朋友教书</div>
+                </Card>
+              </Badge>
+            </div>
+          </div>
+        </Panel>
+
+
+        <Panel name="3">
+          未来可能考虑参加的
+          <div slot="content" style="overflow:hidden">
+            <div @click="add('add')">
+              <Card class="card card-add margin-10 fl" :bordered="false">
+                <Icon type="md-add" size="110" color="#ccc" />
+                <h2 style="color:#ccc">添加奖项</h2>
+              </Card>
+            </div>
+            <div @click="cardEvent(1)">
+              <Badge dot class="margin-10 fl">
+                <Card class="card card-red" :bordered="false">
+                  <div class="title">
+                    <p class="en">社区活动</p>
+                    <p class="zh">给小朋友教书</p>
+                  </div>
+                  <div class="card-content">一周3次给社区小朋友教书</div>
+                </Card>
+              </Badge>
+            </div>
+            <div @click="cardEvent(2)">
+              <Badge dot class="margin-10 fl">
+                <Card class="card card-blue" :bordered="false">
+                  <div class="title">
+                    <p class="en">社区活动</p>
+                    <p class="zh">给小朋友教书</p>
+                  </div>
+                  <div class="card-content">一周3次给社区小朋友教书</div>
                 </Card>
               </Badge>
             </div>
           </div>
         </Panel>
       </Collapse>
-
     </div>
+
+    <Modal v-model="modelDisplay" title="添加奖项" @on-ok="submit" @on-cancel="cancel">
+      <div style="width:370px; margin-left:30px;">
+        <Form :label-width="130">
+          <FormItem label="奖项级别" prop="type">
+            <Select v-model="formData.type" placeholder="奖项级别">
+              <Option value="SAT">School</Option>
+              <Option value="TOEFL">State/Regional</Option>
+              <Option value="TOEFL">National</Option>
+              <Option value="TOEFL">International</Option>
+            </Select>
+          </FormItem>
+
+          <FormItem label="奖项名称" prop="type">
+            <Input v-model="formData.input3" />
+          </FormItem>
+
+          <FormItem label="参与年级" prop="type">
+            <Checkbox v-model="single">9</Checkbox>
+            <Checkbox v-model="single">10</Checkbox>
+            <Checkbox v-model="single">11</Checkbox>
+            <Checkbox v-model="single">12</Checkbox>
+          </FormItem>
+
+          <FormItem label="奖项描述" prop="type">
+            <Input v-model="formData.textarea" type="textarea" :autosize="{minRows: 4,maxRows: 6}" placeholder="Enter something..." />
+          </FormItem>
+        </Form>
+      </div>
+    </Modal>
+
+
+
+
+
 
     <!-- <float-layer>抽屉组件内容。。。</float-layer> -->
 
@@ -108,7 +167,9 @@ import floatLayer from "../../../components/FloatLayer";
 export default {
   data() {
     return {
-      arr: [1,2],
+      formData:{},
+      modelDisplay: false,
+      arr: [1,2,3],
     };
   },
   computed: {
@@ -120,6 +181,11 @@ export default {
     }
   },
   methods: {
+    submit(){},
+    cancel(){},
+    add(){
+      this.modelDisplay = true;
+    },
     cardEvent(id) {
       if (id === this.currentCardId) {
         this.foldFlah = false;
